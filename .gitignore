@@ -1,0 +1,22 @@
+# Node / VSCode / OS specific files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Audio & Images (optional, agar large size ho to ignore kar sakte ho)
+*.mp3
+*.jpg
+*.png
+
+# Backup / temp files
+*.bak
+*.tmp
+
+# Logs
+*.log
+
+# Other system files
+*.swp
+*.swo
+
+# Optional: ignore high score storage (localStorage is browser-side)

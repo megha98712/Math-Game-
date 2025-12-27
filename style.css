@@ -1,0 +1,264 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+body {
+  margin: 0;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-family: "Comic Sans MS", cursive;
+  color: #4b2e05;
+
+  background: url("./assets/jungle-image1.jpg") center / cover no-repeat;
+
+  overflow: hidden;
+  animation: fadeIn 2s ease-in-out;
+}
+
+
+    .frame {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeUp 1.5s ease-in-out;
+    }
+
+    .active-frame {
+      display: flex;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #8B4513;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px #fff2cc;
+      animation: floatText 3s ease-in-out infinite;
+    }
+
+    label {
+      font-size: 20px;
+      color: #3e2602;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      font-size: 18px;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 2px solid #8B4513;
+      outline: none;
+      width: 80%;
+      text-align: center;
+      background: #f5deb3;
+      color: #4b2e05;
+    }
+
+    .btn {
+      font-family: "Comic Sans MS", cursive;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      width: 70%;
+      background: linear-gradient(135deg, #a0522d, #8b4513);
+      color: #fff3cd;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      background: linear-gradient(135deg, #deb887, #8b4513);
+      color: #2e1a00;
+    }
+
+    .header-panel {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      color: #3e2602;
+      text-shadow: 1px 1px 2px #fff;
+      animation: floatPanel 4s ease-in-out infinite alternate;
+    }
+
+    #progressBarContainer {
+      width: 80%;
+      height: 15px;
+      background: #fff3cd;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #progressBar {
+      height: 100%;
+      background: linear-gradient(90deg, #ffcc00, #ff6600);
+      width: 100%;
+      transition: width 1s linear;
+    }
+
+    #questionLabel {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #5a3400;
+      text-shadow: 2px 2px #f9e4b7;
+      animation: pop 2s infinite alternate;
+    }
+
+    #feedbackLabel {
+      min-height: 30px;
+      margin: 10px 0;
+      font-size: 22px;
+      font-style: italic;
+      color: #3e1c00;
+    }
+
+    #musicControl {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: rgba(75, 46, 5, 0.6);
+      color: #fffbe7;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    #musicControl:hover {
+      transform: scale(1.2);
+    }
+
+    #gameOverScreen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(139, 69, 19, 0.8));
+      backdrop-filter: blur(10px);
+      color: #fff8dc;
+      text-align: center;
+      z-index: 100;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #gameOverScreen.active {
+      display: flex;
+    }
+
+    #gameOverScreen h2 {
+      font-size: 3em;
+      text-shadow: 3px 3px #000;
+      margin-bottom: 20px;
+    }
+
+    #gameOverScreen .scoreIcons {
+      font-size: 4em;
+      margin: 15px 0;
+    }
+
+    #gameOverScreen p {
+      font-size: 1.8em;
+      margin: 5px 0;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    #playAgainBtn,
+    #menuBtn {
+      font-size: 1.2em;
+      margin-top: 20px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ffcc00, #ff9900);
+      color: #3e1c00;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s;
+    }
+
+    #playAgainBtn:hover,
+    #menuBtn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #fff200, #ff8800);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatText {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatPanel {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(8px);
+      }
+    }

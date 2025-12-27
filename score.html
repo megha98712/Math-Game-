@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 Math Explorer - Leaderboard 🏆</title>
+
+<style>
+
+  body {
+    background: url("./assets/jungle-image1.jpg") center center / cover no-repeat fixed;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-family: "Comic Sans MS", cursive;
+    color: #fff;
+
+    animation: fadeIn 2s ease-in-out;
+  }
+
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 42px;
+    color: #ffebcd;
+    text-shadow: 3px 3px 10px #000;
+    margin-bottom: 25px;
+  }
+
+  table {
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    color: #fff9e6;
+    min-width: 400px;
+  }
+
+  th, td {
+    padding: 14px 25px;
+    font-size: 18px;
+  }
+
+  th {
+    background: rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    text-transform: uppercase;
+  }
+
+  tr:nth-child(even) {
+    background: rgba(255,255,255,0.1);
+  }
+
+  tr:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  button {
+    margin-top: 30px;
+    font-size: 18px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #a0522d, #8b4513);
+    color: #fff3cd;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #deb887, #8b4513);
+    color: #2e1a00;
+  }
+
+  .no-score {
+    font-size: 20px;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 25px;
+    border-radius: 15px;
+  }
+</style>
+</head>
+
+<body>
+  <h1>🏆 Math Explorer Leaderboard 🏆</h1>
+
+  <div id="scoreTableContainer"></div>
+
+  <button onclick="window.close()">⬅ Back to Game</button>
+
+  <script>
+    // LocalStorage key used in main game
+    const SCORE_KEY = "mathExplorerScores";
+
+    // Load all saved scores
+    const scores = JSON.parse(localStorage.getItem(SCORE_KEY)) || [];
+
+    const container = document.getElementById("scoreTableContainer");
+
+    if (scores.length === 0) {
+      container.innerHTML = '<p class="no-score">No scores yet! Play the game to create history 🎮</p>';
+    } else {
+      // Create leaderboard table dynamically
+      let tableHTML = `
+        <table>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Score</th>
+            <th>Date</th>
+          </tr>
+      `;
+
+      scores.forEach((s, index) => {
+        tableHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${s.name}</td>
+            <td>${s.score}</td>
+            <td>${s.date}</td>
+          </tr>
+        `;
+      });
+
+      tableHTML += `</table>`;
+      container.innerHTML = tableHTML;
+    }
+  </script>
+</body>
+</html>

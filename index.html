@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎮 Math Explorer - Enhanced Edition 🎮</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+ <audio id="bgMusic" autoplay loop> <source src="C:/Users/megha/Downloads/sweet_song.mp3" type="audio/mpeg"> </audio> <audio id="correctSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_b9a4372e37.mp3" preload="auto"></audio> <audio id="wrongSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c647e6b21e.mp3" preload="auto"></audio> <button id="musicControl" title="Toggle Music">🔊</button>
+
+  <!-- Login Frame -->
+  <div id="loginFrame" class="frame active-frame">
+    <h1 class="title">🔑 Login to Math Explorer</h1>
+    <label>Enter Your Name:</label>
+    <input type="text" id="nameEntry" placeholder="Your Name">
+    <button id="loginBtn" class="btn">Start ▶</button>
+  </div>
+
+  <!-- Menu -->
+  <div id="menuFrame" class="frame">
+    <h1 class="title">🧮 Math Explorer 🧮</h1>
+    <p id="welcomeLabel"></p>
+    <button class="btn" onclick="startGame('Easy')">😊 Easy Mode</button>
+    <button class="btn" onclick="startGame('Hard')">💪 Hard Mode</button>
+    <button class="btn" onclick="openScore()">🏆 Score</button>
+    <button class="btn" onclick="openAbout()">ℹ About</button>
+  </div>
+
+  <!-- Game Frame -->
+  <div id="gameFrame" class="frame">
+    <div class="header-panel">
+      <span id="scoreLabel">⭐ Score: 0</span>
+      <span id="livesLabel">❤ Lives: 3</span>
+      <span id="timerLabel">⏱ Time: 20s</span>
+    </div>
+
+    <div id="progressBarContainer">
+      <div id="progressBar"></div>
+    </div>
+
+    <h2 id="questionLabel">Question</h2>
+    <input type="number" id="answerEntry" placeholder="Enter Answer" onkeypress="handleEnter(event)">
+    <button class="btn" onclick="checkAnswer()">✅ Check</button>
+    <p id="feedbackLabel"></p>
+    <button class="btn" onclick="backToMenu()">⬅ Back</button>
+  </div>
+
+  <!-- Game Over -->
+  <div id="gameOverScreen">
+    <h2>🎮 Game Over!</h2>
+    <div class="scoreIcons">⭐🏆⭐</div>
+    <p id="finalScore"></p>
+    <p id="highScoreText"></p>
+    <button id="playAgainBtn" onclick="restartGame()">🔁 Play Again</button>
+    <button id="menuBtn" onclick="backToMenuFromOver()">🏡 Back to Menu</button>
+  </div>
+
+
+  <script src="script.js"></script>
+
+  
+</body>
+</html>
